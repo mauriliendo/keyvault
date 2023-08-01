@@ -1,0 +1,2 @@
+$SECRETS = az keyvault secret list --vault-name "kv-ship-config-dr" | ConvertFrom-Json;  
+$SECRETS | Select-Object -Property Name | ForEach-Object { az keyvault secret delete --vault-name "kv-ship-config-dr" --name $_.Name  }
